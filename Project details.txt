@@ -1,0 +1,42 @@
+----------------------------------------
+--------- Details of project -----------
+----------------------------------------
+
+- Overall outlook of APP
+	1) Home Page tab
+	2) Posts tab (Filter by months/categories/#hashtags to display posts)
+	3) Adding posts (Admin/User rights)
+	4) Login page
+
+- Give me a way to display my blog posts to everyone who comes to my site. -> Backend/Frontend
+	1) Filter by months/categories/#hashtags to display posts
+
+- Give me a way to enter my blog posts so that only I can add them. -> Backend/Frontend
+	1) User/Admin rights for adding posts -> Admin must approve user's posts
+
+- Implement TinyMCE for adding posts (with rich text and images) -> Frontend
+- Adding hashtags and expiring blogposts -> Connecting hashtags tables to the posts tables (Database)
+
+Example: https://blog-app-3cda4.firebaseapp.com/
+
+-------------------------------------
+--------- Flow of project -----------
+-------------------------------------
+
+Backend
+-------
+1) List our entities 
+   - Blog post - Who added it?, title, dateStamp, bodyOfPost
+   - Users
+2) Design the database (ERD)
+3) Create interfaces (methods) based on the requiements listed above. 
+   - Select to display data
+   - Filter by months/categories/#hashtags
+   - Add new posts (user/admin)
+   - Automatic deletion of posts by expiry
+4) Implementing the interfaces
+5) Develop the database
+
+Frontend
+--------
+1) Angular app creation 
