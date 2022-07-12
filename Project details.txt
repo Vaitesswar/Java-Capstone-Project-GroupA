@@ -25,17 +25,23 @@ Example: https://blog-app-3cda4.firebaseapp.com/
 
 Backend
 -------
-1) List our entities 
-   - Blog post - Who added it?, title, dateStamp, bodyOfPost
-   - Users
+1a) Entities 
+   - Blog post
+   - Hash tag
+   - Category
+
+1b) Connecting tables
+   - Hash tag to Post
+   - Category to Hash tag
+
 2) Design the database (ERD)
+
 3) Create interfaces (methods) based on the requiements listed above. 
    - Select to display data
    - Filter by months/categories/#hashtags
    - Add new posts (user/admin)
-   - Automatic deletion of posts by expiry
-4) Implementing the interfaces
-5) Develop the database
+   - Automatic deletion of posts by expiry & user-defined
+   - Updating blog post
 
 Frontend
 --------
