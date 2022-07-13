@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<title>Content Manager</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<h1><a href="/" class="text-dark">Content Management</a></h1>
+		</div>
+		<div class="row">
+			<div class="col-8">
+				<div class="row">
+					<div style="clear: oth">
+						<h3 style="float: left" th:text="'Posts from category ' + ${category.getCategory()}"></h3>
+						<a href="#" th:href="@{addPost}" style="float:right">Add Post</a>
+					</div>
+
+					<div th:each="post : ${posts}" class="col-10 card text-center m-1">
+						<div class="card-body">
+							<h5 class="card-title" th:text="${post.id} + '. ' + ${post.title}">title</h5>
+							<h6 class="card-subtitle mb-2 text-muted" th:text="${post.dateOfPost}">date</h6>
+							<h6 class="card-subtitle mb-2 text-muted" th:text="${post.bodyOfPost}">body</h6>
+							<a href="#" th:href="@{editPost(id=${post.id})}" class="card-link">Edit Post</a>
+							<a href="#" th:href="@{deletePost(id=${post.id})}" class="card-link">Delete Post</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="hashtag">
+				<h4 class="col-4">Search</h4>
+				<form type="form" action="viewHashtag" method="POST">
+					<div class="form-group">
+						<label class="col-4" for="hashtagWord"></label>
+						<input type="text" class="col-8 form-control" id="hashtagWord" name="hashtag" />
+					</div>
+					<button type="submit" class="btn btn-primary">Search Hashtag</button>
+				</form>
+
+				<div class="month">
+					<h4 class="col-4">Month</h4>
+					<div th:each="month: ${months}">
+						<a href="#" th:href="@{viewMonth(month=${month})}" th:text="'Month '+ ${month}"
+							class="card-link">month</a>
+					</div>
+
+					<div class="category">
+						<h4 class="col-4">Category</h4>
+						<div th:each="categoryObj:${categories}">
+							<a href="#" th:href="@{viewCategory(id=${categoryObj.id})}"
+								th:text="${categoryObj.category}" class="card-link">category</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- Optional JavaScript -->
+			<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+				integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+				crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+				integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+				crossorigin="anonymous"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+				integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+				crossorigin="anonymous"></script>
+</body>
+
+</html>

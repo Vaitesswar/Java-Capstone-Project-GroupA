@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<title>Content Manager</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<h1><a href="/" class="text-dark">Content Management</a></h1>
+		</div>
+		<div class="row">
+			<div class="col-8">
+                  <h3>Edit Post</h3>
+                  <form action="editPost" method="POST" class="form">
+                      <div class="form-group">
+                          <label class="col-4" for="postTitle">Title</label>
+                          <input class="col-8 form-control" th:value="${post.title}" type="text" id="postTitle" name="title"/>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-4" for="postUser">User</label>
+                          <input class="col-8 form-control" th:value="${post.userName}" type="text" id="postUser" name="userName"/>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-4" for="postBody">Body</label>
+                          <input class="col-8 form-control" th:value="${post.bodyOfPost}" type="text" id="postBody" name="bodyOfPost"/>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-4" for="postDate">Date of Post</label>
+                          <input class="col-8 form-control" th:value="${post.dateOfPost}" type="date" id="postDate" name="dateOfPost"/>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-4" for="postExpiry">Date of Expiry</label>
+                          <input class="col-8 form-control" th:value="${post.dateOfExpiry}" type="date" id="postExpiry" name="dateOfExpiry"/>
+                      </div>
+                      <input type="hidden" name="postId" th:value="${post.id}"/>
+               
+                      <button type="submit" class="btn btn-primary">Edit Post</button>
+                  </form>
+              </div>
+
+			<div class="hashtag">
+				<h4 class="col-4">Search</h4>
+				<form type="form" action="viewHashtag" method="POST">
+					<div class="form-group">
+						<label class="col-4" for="hashtagWord"></label>
+						<input type="text" class="col-8 form-control" id="hashtagWord" name="hashtag" />
+					</div>
+					<button type="submit" class="btn btn-primary">Search Hashtag</button>
+				</form>
+
+				<div class="month">
+					<h4 class="col-4">Month</h4>
+					<div th:each="month: ${months}">
+						<a href="#" th:href="@{viewMonth(month=${month})}" th:text="'Month '+ ${month}"
+							class="card-link">month</a>
+					</div>
+
+					<div class="category">
+						<h4 class="col-4">Category</h4>
+						<div th:each="categoryObj:${categories}">
+							<a href="#" th:href="@{viewCategory(id=${categoryObj.id})}"
+								th:text="${categoryObj.category}" class="card-link">category</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- Optional JavaScript -->
+			<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+				integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+				crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+				integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+				crossorigin="anonymous"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+				integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+				crossorigin="anonymous"></script>
+</body>
+
+</html>
